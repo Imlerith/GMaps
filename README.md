@@ -1,1 +1,1 @@
-# GMaps- get Google Maps rectangles' coordinates
+# GMaps: get Google Maps rectangles' coordinates
