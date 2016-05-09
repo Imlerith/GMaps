@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
+    <meta charset="utf-8">
+    <title>Rectangles</title>
+    <style>
+      html, body {
+        height: 90%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 90%;
+      }
+    </style>
+    <script>
+
+      // This example adds a red rectangle to a map.
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: {lat: 2.551405, lng: 111.911212},
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var rectangle = new google.maps.Rectangle({
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35,
+          draggable: true,
+          editable: true,
+          map: map,
+          bounds: {
+            north: 3.116506,
+            south: 2.112316,
+            east: 112.619831,
+            west: 111.208088
+          }
+        });
+        //snippet to get the rectangle coordinates  
+        google.maps.event.addListener(rectangle, 'bounds_changed', function() {
+          document.getElementById("info").innerHTML = rectangle.getBounds(); //SW, NE bounds
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Drawing Rectangles and Getting Coordinates </h2>
+    <div id="map"></div>
+    <div id="info"></div>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=[INSERT GOOGLE API KEY]&callback=initMap">
+    </script>
+  </body>
+</html>
